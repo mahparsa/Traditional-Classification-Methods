@@ -1,2 +1,3 @@
-RF.py is a simple random forest classification. 
-RF_EEG.py is a code of random forest to classify EEG.  
+1) RF.py is a simple random forest classification. 
+
+2) RF_EEG.py is a code of random forest to classify EEG.  
