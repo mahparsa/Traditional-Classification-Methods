@@ -57,32 +57,32 @@ print("Train score :", train_score_ERT)
 print("Test score :", test_score_ERT)
 
 ############################################################################################
-
-
-
 predicted_proba_ERT = clf_ERT.predict_proba(X_test)[:,1]
 y_pred=predicted_ERT
-
 from sklearn.metrics import accuracy_score #works
 import matplotlib.pyplot as plt
 fpr, tpr, thresholds = metrics.roc_curve(np.transpose(y_test), np.transpose(predicted_proba_ERT))
-
-
 print("The Area Under an ROC Curve :", roc_auc_score(y_test,predicted_proba_ERT))
-
 lw=2
 df = pd.DataFrame(dict(fpr=fpr, tpr=tpr))
-
-
-
+from matplotlib.pyplot import *
+df = pd.DataFrame(dict(fpr=fpr, tpr=tpr))
+fig_size = plt.rcParams["figure.figsize"]
+# Prints: [8.0, 6.0]
+print ("Current size:", fig_size)
+# Set figure width to 12 and height to 9
+fig_size[0] = 10
+fig_size[1] = 10
+plt.rcParams["figure.figsize"] = fig_size
+matplotlib.rcParams.update({'font.size': 20})
 plt.figure()
 plt.plot(fpr, tpr, color='darkorange')
-plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+plt.plot([0, 1], [0, 1], color='r', lw=lw, linestyle='-.')
 plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
+plt.ylim([0.0, 1.0])
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.title('M')
+plt.title('ROC curve of Extremely Randomized Trees')
 plt.legend(loc="lower right")
 plt.show()
 
